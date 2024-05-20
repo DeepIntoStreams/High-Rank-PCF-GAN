@@ -313,7 +313,7 @@ class CexpLoss(Loss):
                 fake_data_future = fake_data_future.mean(0)
                 fake_data_futures.append(fake_data_future)
             cexp_fake = torch.stack(fake_data_futures)
-        if self.config.dataset == 'FBM':
+        if self.config.dataset == 'fBM':
             from src.utils import compute_expected_mean
             exp_x_reals = []
             for i in range(N):

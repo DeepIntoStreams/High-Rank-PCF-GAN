@@ -171,7 +171,7 @@ def main(dataset):
                                          noise_scale=rank_2_config.noise_scale,
                                          n_layers=2).to(rank_2_config.device)
     generator.load_state_dict(torch.load(rank_2_config.exp_dir + '/G.pt'))
-
+    generator.eval()
     res_df = full_evaluation_latest(generator, test_X, eval_config)
 
     print(res_df)

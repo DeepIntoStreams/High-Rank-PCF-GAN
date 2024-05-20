@@ -30,8 +30,6 @@ def main(config):
     # For compatibility
     config.input_dim = config.data_feat_dim
     config.future_path_length = config.n_lags - config.past_path_length
-    config.comment='test'
-    config.steps = 101
     config.exp_dir = './numerical_results/{}/grid_algo_{}_comment_{}/'.format(
         config.dataset,
         config.gan_algo,
@@ -119,7 +117,10 @@ def main(config):
     eval_config.result_name = '/results.csv'
     eval_config.exp_dir = config.exp_dir
     torch.manual_seed(0)
+    trainer.G.eval()
     if config.gan_algo == "TimeGAN":
+        trainer.recovery.eval()
+        trainer.supervisor.eval()
         res_df = full_evaluation_latest(trainer.G, test_X, eval_config, recovery=trainer.recovery, supervisor=trainer.supervisor)
     else:
         res_df = full_evaluation_latest(trainer.G, test_X, eval_config)

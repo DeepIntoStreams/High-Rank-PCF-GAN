@@ -233,7 +233,7 @@ class EvaluationComponent(object):
 
     def hist_loss(self, real, fake):
         ecfg = self.config.Evaluation.TestMetrics.hist_loss
-        if self.config.dataset == 'FBM':
+        if self.config.dataset == 'fBM':
             loss = to_numpy(HistoLoss(real[:, 1:, :], n_bins=ecfg.n_bins, name='hist_loss')(fake[:, 1:, :]))
         else:
             loss = to_numpy(HistoLoss(real, n_bins=ecfg.n_bins, name='hist_loss')(fake))
