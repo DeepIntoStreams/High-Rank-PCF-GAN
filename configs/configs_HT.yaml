@@ -1,0 +1,56 @@
+# gan model, PathChar_GAN,RPathChar_GAN,RCGAN,TimeGAN, CotGAN,RCFGAN
+gan_algo: HighRankPCFGAN
+train: True
+pretrained: False
+generator: LSTM
+dataset: FBM
+device: cuda
+gpu_id : "1"
+seed: 0
+n_lags: 20
+data_feat_dim: 3
+
+# Regression:
+R_input_dim: 4
+R_hidden_dim: 128
+R_num_layers: 2
+#R_output_dim: 5 # The output lie degree
+R_iterations: 2000
+lr_R: 0.001
+# Rank 1 PCF
+Rank_1_lie_degree: 3
+Rank_1_num_samples: 1
+
+# Rank 2 PCF
+Rank_2_lie_degree: 13
+Rank_2_num_samples: 10
+lr_D: 0.02
+
+
+#hyperparameters:
+lr_G: 0.001
+D_steps_per_G_step: 1
+
+batch_size: 1024
+steps: 10000
+gamma: 0.97
+swa_step_start: 10000
+
+#generator hyperparameter:
+G_input_dim: 5
+G_hidden_dim: 128
+G_num_layers: 2
+noise_scale : 0.05
+grad_clip: 10
+
+# config for PCF_GAN
+M_hidden_dim: 10
+M_num_samples: 6
+BM: True
+add_time: True
+
+lie_group: "unitary_tridiag"
+partition_size: 3
+comment: ""
+evaluate_every: 500
+G_steps_per_D_step: 1

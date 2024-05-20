@@ -1,0 +1,58 @@
+# gan model, PathChar_GAN,RPathChar_GAN,RCGAN,TimeGAN, CotGAN,RCFGAN
+gan_algo: HighRANKCPCFGAN
+generator: ConditionalLSTM
+dataset: Stock
+device: cuda
+gpu_id : "1"
+seed: 0
+n_lags: 10
+past_path_length: 5
+future_path_length: 5
+data_feat_dim: 5
+add_time: True
+
+#hyperparameters:
+lr_G: 0.0001
+lr_D: 0.002
+D_steps_per_G_step: 1
+G_steps_per_D_step: 2
+R_steps_per_G_step: 500
+
+# Training
+batch_size: 128
+steps: 5000
+gamma: 0.97
+swa_step_start: 10000
+partition_size: 3
+evaluate_every: 100
+
+#generator hyperparameter:
+G_latent_dim: 5
+G_hidden_dim: 32
+grad_clip: 10
+noise_scale: 0.1
+
+
+# Rank 2 PCF
+lie_group: "unitary"
+Rank_2_lie_degree: 13
+Rank_2_num_samples: 10
+init_lambda: 0.1
+MC_size: 400
+
+# Regression:
+R_input_dim: 4
+R_hidden_dim: 128
+R_num_layers: 2
+R_iterations: 2000
+lr_R: 0.001
+
+# Finetune regression
+fine_tune_regression: True
+Finetune_R_iterations: 400
+Finetune_R_batch_size: 128
+Finetune_R_max_tor: 20
+Finetune_R_lr: 0.000001
+
+rank_1_exp_dir: ''
+comment: ""

@@ -1,0 +1,40 @@
+# gan model, PathChar_GAN,RPathChar_GAN,RCGAN,TimeGAN, CotGAN,RCFGAN
+gan_algo: vanillaCPCFGAN
+train: True
+generator: ConditionalLSTM
+dataset: Stock
+device: cuda
+gpu_id : "1"
+seed: 0
+n_lags: 10
+past_path_length: 5
+future_path_length: 5
+data_feat_dim: 5
+
+#hyperparameters:
+lr_G: 0.0001
+lr_D: 0.002
+D_steps_per_G_step: 1
+G_steps_per_D_step: 2
+
+# Rank 1 PCF
+Rank_1_lie_degree: 5
+Rank_1_num_samples: 5
+add_time: True
+
+batch_size: 256
+steps: 10000
+gamma: 0.97
+swa_step_start: 10000
+
+#generator hyperparameter:
+G_latent_dim: 5
+G_hidden_dim: 32
+grad_clip: 10
+noise_scale: 0.1
+
+lie_group: "unitary"
+partition_size: 3
+comment: ""
+evaluate_every: 500
+init_lambda: 0.1
