@@ -1,4 +1,4 @@
-# Extended Weak Topology and High Rank Path Development
+# High Rank Path Development: an approach of learning the filtration of stochastic processes
 
 ## Environment Setup
 The code has been successfully tested using Python 3.10 and PyTorch 1.11 with GPU support. Therefore, we suggest using this version or a later version of Python and PyTorch. A typical process for installing the package dependencies involves creating a new Python virtual environment.
